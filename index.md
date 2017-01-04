@@ -1,3 +1,4 @@
-# 测试首页
+# Notes directory
 
-[C#类型](docs/C#类型.md)
++ C#语言
+  + [C#类型](docs/C#类型.md)

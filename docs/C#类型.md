@@ -95,12 +95,12 @@ Console.WriteLine((new ValPoint()).x);
 如果有这样一个类，依然代表直线上的一点：
 
 ```csharp
-    public class RefPoint
-    {
-        public int x;
-        public RefPoint(int x){this.x=x;}
-        public RefPoint() { }
-    }
+public class RefPoint
+{
+    public int x;
+    public RefPoint(int x){this.x=x;}
+    public RefPoint() { }
+}
 ```
 
 仅仅写下声明语句时：
@@ -156,25 +156,28 @@ RefPoint rPoint1=new RefPoint(1);
 在`System.Object`基类型中，定义了实例方法`Equals(Object objA,Object objB)`，静态方法`Equals(Object objA,Object objB)`，静态方法`ReferenceEquals(Object objA,Object objB)`这三个方法进行对象的判等。
 
 ```csharp
-    public virtual bool Equals(Object obj)
-    {
-        return RuntimeHelpers.Equals(this, obj);
-    }
+public virtual bool Equals(Object obj)
+{
+    return RuntimeHelpers.Equals(this, obj);
+}
 
-    public static bool Equals(Object objA, Object objB) 
-    {
-        if (objA==objB) {
-            return true;
-        }
-        if (objA==null || objB==null) {
-            return false;
-        }
-        return objA.Equals(objB);
+public static bool Equals(Object objA, Object objB)
+{
+    if (objA==objB)
+    {
+        return true;
     }
+    if (objA==null || objB==null)
+    {
+        return false;
+    }
+    return objA.Equals(objB);
+}
 
-    public static bool ReferenceEquals (Object objA, Object objB) {
-        return objA == objB;
-    }
+public static bool ReferenceEquals (Object objA, Object objB)
+{
+    return objA == objB;
+}
 ```
 
 `ReferenceEquals(Object objA,Object objB)`方法简单地返回`objA==objB`，判等两个变量是否指向堆上同一个对象。对于`Object.Equals()`静态方法，如果任何一个对象引用为null，则总是返回false。当对象不为null时，最后调用了实例上的Equals()方法。
@@ -223,10 +226,3 @@ public object Clone()
 > 注意：如果想将对象进行序列化，对象本身，及其所有的自定义成员(类、结构)，都必须使用Serializable特性进行标记。
 
 ------------
-
-
-
-
-
-
-
